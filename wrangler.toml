@@ -1,7 +1,0 @@
-[pages]
-page_build_output_dir = "."
-functions_dir = "./functions"
-
-[[functions]]
-pattern = "/ratecss/custom"
-type = "dynamic"

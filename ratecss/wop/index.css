@@ -1,0 +1,16 @@
+/* wop - index */
+.flex-interwiki-rate .page-rate-widget-box>.rate-points .number {
+    color: rgb(var(--basalt-main-text-color));
+    position: absolute;
+    top: -1.6px;
+}
+
+:root {
+    --basalt-main-text-color: 25, 20, 16;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --basalt-main-text-color: 237, 233, 223;
+    }
+}
