@@ -1,0 +1,18 @@
+{
+    "name": "custom-color-api",
+    "version": "1.0.0",
+    "main": "functions/custom-color.ts",
+    "dependencies": {
+      "colord": "^2.9.3",
+      "hono": "^3.12.8"
+    },
+    "devDependencies": {
+      "@cloudflare/workers-types": "^4.20230801.0",
+      "typescript": "^5.2.2",
+      "wrangler": "^3.12.0"
+    },
+    "scripts": {
+      "dev": "wrangler pages dev ./ --live-reload",
+      "deploy": "wrangler pages deploy ./"
+    }
+  }
