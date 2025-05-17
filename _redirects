@@ -5,24 +5,32 @@
 /ratecss/ability                            /ratecss/ability/index.css 200
 /ratecss/ability/                           /ratecss/ability/index.css 200
 /ratecss/special-ability-wiki               /ratecss/ability/index.css 200
+/ratecss/special-ability-wiki-sandboxcn     /ratecss/ability/index.css 200
 
 /ratecss/anothords                          /ratecss/anothords/index.css 200
 /ratecss/anothords/                         /ratecss/anothords/index.css 200
+/ratecss/anothords-sandbox                  /ratecss/anothords/index.css 200
 
 /ratecss/as                                 /ratecss/as/index.css 200
 /ratecss/as/                                /ratecss/as/index.css 200
 /ratecss/asbackroom                         /ratecss/as/index.css 200
+/ratecss/capybara-thirteen                  /ratecss/as/index.css 200
+/ratecss/brsandbox-pro                      /ratecss/as/index.css 200
+/ratecss/brsandbox-mini                     /ratecss/as/index.css 200
 
 /ratecss/dfc                                /ratecss/dfc/index.css 200
 /ratecss/dfc/                               /ratecss/dfc/index.css 200
 /ratecss/deep-forest-club                   /ratecss/dfc/index.css 200
+/ratecss/dfc-sandbox                        /ratecss/dfc/index.css 200
 
 /ratecss/isc                                /ratecss/isc/index.css 200
 /ratecss/isc/                               /ratecss/isc/index.css 200
 /ratecss/ccb-wiki                           /ratecss/isc/index.css 200
+/ratecss/iscsandbox                         /ratecss/isc/index.css 200
 
 /ratecss/nationarea                         /ratecss/nationarea/index.css 200
 /ratecss/nationarea/                        /ratecss/nationarea/index.css 200
+/ratecss/nationareabox                      /ratecss/nationarea/index.css 200
 
 /ratecss/neironlight                        /ratecss/neironlight/index.css 200
 /ratecss/neironlight/                       /ratecss/neironlight/index.css 200
@@ -30,10 +38,12 @@
 
 /ratecss/rule-wiki                          /ratecss/rule-wiki/index.css 200
 /ratecss/rule-wiki/                         /ratecss/rule-wiki/index.css 200
+/ratecss/rule-wiki-sandbox                  /ratecss/rule-wiki/index.css 200
 
 /ratecss/wop                                /ratecss/wop/index.css 200
 /ratecss/wop/                               /ratecss/wop/index.css 200
 /ratecss/write-on-paper                     /ratecss/wop/index.css 200
+/ratecss/wop-sandbox                        /ratecss/wop/index.css 200
 
 /ratecss/zd                                 /ratecss/zd/index.css 200
 /ratecss/zd/                                /ratecss/zd/index.css 200
