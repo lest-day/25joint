@@ -1,4 +1,4 @@
 /* anothords - index */
-.flex-interwiki-rate .page-rate-widget-box>.rate-points .number {
+div.flex-interwiki-rate div.page-rate-widget-box>span.rate-points .number {
     color: rgb(20, 20, 20);
 }

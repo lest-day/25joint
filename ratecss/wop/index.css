@@ -1,5 +1,5 @@
 /* wop - index */
-.flex-interwiki-rate .page-rate-widget-box>.rate-points .number {
+div.flex-interwiki-rate div.page-rate-widget-box>span.rate-points .number {
     color: rgb(var(--basalt-main-text-color));
     position: absolute;
     top: -1.6px;
