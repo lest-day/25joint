@@ -4,7 +4,7 @@
     "main": "functions/custom-color.ts",
     "dependencies": {
         "colord": "^2.9.3",
-        "hono": "^3.12.8"
+        "hono": "^4.6.5"
     },
     "devDependencies": {
         "@cloudflare/workers-types": "^4.20230801.0",
