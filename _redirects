@@ -52,4 +52,4 @@
 /ratecss/backrooms-survivor-governor        /ratecss/zd/index.css 200
 
 # Rule List
-/ratecss/*/*                                /ratecss/:splat.css 200
+/ratecss/*/*                                /ratecss/$1/$2.css 301
