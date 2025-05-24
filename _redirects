@@ -2,6 +2,8 @@
 /ratecss/general/                           /ratecss/general.css 200
 
 # Wiki List
+/ratecss/syndication                        /ratecss/as/index.css 200
+
 /ratecss/ability                            /ratecss/ability/index.css 200
 /ratecss/ability/                           /ratecss/ability/index.css 200
 /ratecss/special-ability-wiki               /ratecss/ability/index.css 200
@@ -15,7 +17,6 @@
 /ratecss/as/                                /ratecss/as/index.css 200
 /ratecss/asbackroom                         /ratecss/as/index.css 200
 /ratecss/capybara-thirteen                  /ratecss/as/index.css 200
-/ratecss/syndication                        /ratecss/as/index.css 200
 /ratecss/brsandbox-pro                      /ratecss/as/index.css 200
 /ratecss/brsandbox-mini                     /ratecss/as/index.css 200
 
@@ -49,3 +50,6 @@
 /ratecss/zd                                 /ratecss/zd/index.css 200
 /ratecss/zd/                                /ratecss/zd/index.css 200
 /ratecss/backrooms-survivor-governor        /ratecss/zd/index.css 200
+
+# Rule List
+/ratecss/*/*                                /ratecss/:splat.css 200
