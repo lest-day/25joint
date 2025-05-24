@@ -2,3 +2,7 @@
 .flex-interwiki-rate .page-rate-widget-box>.rate-points {
     color: rgb(237, 233, 223);
 }
+
+div.page-rate-widget-box .rate-points .number {
+    font-size: 16px;
+}
