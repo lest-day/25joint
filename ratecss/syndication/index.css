@@ -1,4 +1,4 @@
 /* syndication -index */
-div.flex-interwiki-rate div.page-rate-widget-box>span.rate-points .number {
+#page-content div.rate {
     color: rgb(25, 20, 16);
 }
