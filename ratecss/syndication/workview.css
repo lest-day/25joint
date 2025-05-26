@@ -1,8 +1,4 @@
 /* syndication - workview */
-.flex-interwiki-rate .page-rate-widget-box>.rate-points {
+#page-content div.rate {
     color: rgb(237, 233, 223);
-}
-
-div.page-rate-widget-box .rate-points .number {
-    font-size: 16px;
 }
