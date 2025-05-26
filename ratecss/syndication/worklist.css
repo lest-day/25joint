@@ -1,8 +1,5 @@
 /* syndication - worklist */
-.flex-interwiki-rate .page-rate-widget-box > .rate-points {
-    font-weight: normal;
-}
-
-div.page-rate-widget-box .rate-points .number {
-    font-size: 16px;
+#page-content div.rate {
+    bottom: 2.5px;
+    position: relative;
 }
