@@ -1,4 +1,6 @@
 /* as -index */
 #page-content div.rate {
     color: rgb(25, 20, 16);
+    padding-top: 1.5px;
+    font-size: calc(0.9375rem * 1.1333333333);
 }
