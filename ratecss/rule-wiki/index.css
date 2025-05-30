@@ -1,4 +1,5 @@
 /* rulewiki - index */
-div.flex-interwiki-rate div.page-rate-widget-box>span.rate-points .number {
+#page-content div.rate {
     color: rgb(20, 20, 20);
+    padding-top: unset !important;
 }

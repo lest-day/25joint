@@ -1,4 +1,5 @@
 /* dfc - index */
-div.flex-interwiki-rate div.page-rate-widget-box>span.rate-points .number {
+#page-content div.rate {
     color: #fff;
+    padding-top: 4.5px;
 }
