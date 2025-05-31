@@ -46,7 +46,7 @@
       ],
       
       // 参数名称
-      paramName: 'custom',
+      paramName: 'css',
       
       // 调试模式
       debug: false
