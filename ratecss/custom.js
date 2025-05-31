@@ -52,11 +52,8 @@
         'clip', 'clear', 'content', 'counter-reset', 'counter-increment'
       ],
       
-      // URL参数名
+      // 参数名称
       paramName: 'css',
-      
-      // 是否使用!important
-      useImportant: true,
       
       // 调试模式
       debug: true
