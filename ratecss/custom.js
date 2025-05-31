@@ -1,140 +1,123 @@
 /**
- * Dynamic Style Injector - 生产环境实用版
- * @description 安全注入CSS样式，完美支持iframe环境
- * @version 2.2.0
- * @license MIT
+ * 跨窗口安全样式注入器 (支持 iframe)
+ * @version 2.1.0
  */
 (function() {
     'use strict';
     
-    // 配置设置（可根据需要修改）
-    const config = {
-      // 目标元素选择器
+    // 配置 (可在调用前修改)
+    const CONFIG = {
       target: '#page-content div.rate',
-      
-      // URL参数名称
       param: 'css',
-      
-      // 允许的CSS属性（精简生产环境白名单）
       allowed: [
-        // 盒模型
+        // 布局属性
+        'display', 'position', 'top', 'right', 'bottom', 'left',
+        'width', 'height', 'min-width', 'min-height', 'max-width', 'max-height',
         'margin', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left',
         'padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left',
+        'float', 'clear', 'z-index',
         
-        // 样式
-        'color', 'background', 'background-color',
+        // 文本属性
+        'color', 'font', 'font-family', 'font-size', 'font-weight', 'font-style',
+        'text-align', 'text-decoration', 'text-transform', 'line-height',
+        'letter-spacing', 'word-spacing', 'white-space',
         
-        // 边框
+        // 背景和边框
+        'background', 'background-color', 'background-image', 'background-position',
+        'background-repeat', 'background-size', 'background-attachment',
         'border', 'border-top', 'border-right', 'border-bottom', 'border-left',
+        'border-width', 'border-style', 'border-color', 'border-radius',
+        'box-shadow', 'outline',
         
-        // 文本
-        'font-size', 'font-weight', 'line-height', 'text-align'
-      ],
-      
-      // 是否启用!important
-      important: false,
-      
-      // 调试模式
-      debug: false
+        // 视觉效果
+        'opacity', 'visibility', 'overflow', 'overflow-x', 'overflow-y',
+        'clip', 'clip-path',
+        
+        // 变换和动画
+        'transform', 'transition', 'animation',
+        
+        // 弹性盒子
+        'flex', 'flex-direction', 'flex-wrap', 'flex-flow', 'justify-content',
+        'align-items', 'align-content', 'order', 'flex-grow', 'flex-shrink',
+        'flex-basis', 'align-self',
+        
+        // 网格布局
+        'grid', 'grid-template', 'grid-template-columns', 'grid-template-rows',
+        'grid-template-areas', 'grid-gap', 'grid-column-gap', 'grid-row-gap',
+        'grid-auto-columns', 'grid-auto-rows', 'grid-auto-flow', 'grid-column',
+        'grid-row', 'grid-area', 'justify-items', 'align-items', 'place-items',
+        'justify-self', 'align-self', 'place-self',
+        
+        // 其他常用属性
+        'cursor', 'pointer-events', 'user-select', 'resize', 'object-fit',
+        'box-sizing', 'vertical-align'
+      ]
     };
   
-    // 环境检测
-    const isIframe = window.self !== window.top;
-    const currentDoc = document;
-    
-    // 日志函数
-    function log(message) {
-      if (config.debug && console && console.log) {
-        console.log('[StyleInjector]', message);
-      }
-    }
+    // 获取当前执行环境 (主窗口或iframe)
+    const env = {
+      isIframe: window.self !== window.top,
+      targetWindow: window.self,  // 始终操作当前窗口
+      targetDocument: document
+    };
   
-    // CSS规则验证
-    function sanitizeRules(cssRules) {
-      if (!cssRules) return '';
-      
-      return cssRules.split(';')
-        .map(rule => {
+    // 安全CSS验证
+    function sanitize(rules) {
+      return (rules || '').split(';')
+        .filter(rule => {
           const [prop, val] = rule.split(':').map(s => s.trim());
-          if (!prop || !val) return null;
-          
-          // 检查属性是否允许
-          const isAllowed = config.allowed.some(
-            allowed => prop.toLowerCase() === allowed.toLowerCase()
-          );
-          
-          return isAllowed ? `${prop}:${val}${config.important ? ' !important' : ''}` : null;
+          return prop && val && CONFIG.allowed.some(a => prop.toLowerCase() === a.toLowerCase());
         })
-        .filter(Boolean)
         .join(';');
     }
   
-    // 样式注入函数
-    function injectStyles() {
+    // 强力注入函数
+    function inject() {
       try {
-        // 1. 获取当前脚本（兼容iframe）
-        const scripts = currentDoc.scripts || [];
-        const script = Array.from(scripts).reverse().find(s => {
-          return s.src && s.src.includes(config.param + '=');
-        });
+        // 1. 获取当前脚本 (跨环境兼容方案)
+        const script = [].slice.call(env.targetDocument.scripts)
+          .reverse()
+          .find(s => s.src.includes(CONFIG.param + '='));
         
-        if (!script) {
-          log('未找到脚本元素');
-          return;
-        }
+        if (!script) return;
   
-        // 2. 解析URL参数
-        let cssRules;
-        try {
-          const url = new URL(script.src, window.location.href);
-          cssRules = url.searchParams.get(config.param);
-        } catch (e) {
-          log('URL解析失败: ' + e.message);
-          return;
-        }
-        
-        // 3. 验证CSS规则
-        const safeRules = sanitizeRules(cssRules);
-        if (!safeRules) {
-          log('没有有效的CSS规则');
-          return;
-        }
+        // 2. 解析参数 (兼容相对路径)
+        const url = new URL(script.src, env.targetWindow.location.href);
+        const css = sanitize(url.searchParams.get(CONFIG.param));
+        if (!css) return;
   
-        // 4. 创建样式标签
-        const style = currentDoc.createElement('style');
-        style.setAttribute('data-style-injector', '');
-        style.textContent = `${config.target} { ${safeRules} }`;
+        // 3. 创建样式标签
+        const style = env.targetDocument.createElement('style');
+        style.textContent = `${CONFIG.target} { ${css} }`;
         
-        // 5. 插入到head或body
-        if (currentDoc.head) {
-          currentDoc.head.appendChild(style);
+        // 4. 多重注入策略
+        if (env.targetDocument.head) {
+          env.targetDocument.head.appendChild(style);
         } else {
-          currentDoc.body.appendChild(style);
+          env.targetDocument.documentElement.appendChild(style);
         }
         
-        log(`样式注入成功: ${safeRules}`);
-  
-      } catch (error) {
-        log('注入失败: ' + error.message);
+      } catch(e) {
+        console.error('StyleInjector error:', e);
       }
     }
   
-    // 初始化函数
+    // 智能初始化
     function init() {
-      // 立即尝试注入
-      injectStyles();
+      // 立即尝试
+      inject();
       
-      // iframe环境下增加额外监听
-      if (isIframe) {
-        currentDoc.addEventListener('DOMContentLoaded', injectStyles);
-        window.addEventListener('load', injectStyles);
+      // iframe 额外保险
+      if (env.isIframe) {
+        env.targetDocument.addEventListener('DOMContentLoaded', inject);
+        env.targetWindow.addEventListener('load', inject);
       }
     }
   
-    // 根据文档状态启动
-    if (currentDoc.readyState === 'loading') {
-      currentDoc.addEventListener('DOMContentLoaded', init);
-    } else {
+    // 自动执行
+    if (document.readyState !== 'loading') {
       init();
+    } else {
+      document.addEventListener('DOMContentLoaded', init);
     }
   })();
