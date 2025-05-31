@@ -1,5 +1,7 @@
 /ratecss/general                            /ratecss/general.css 200
 /ratecss/general/                           /ratecss/general.css 200
+/ratecss/custom                             /ratecss/custom.css 200
+/ratecss/custom/                            /ratecss/custom.css 200
 
 # Wiki List
 /ratecss/syndication                        /ratecss/syndication/index.css 200
