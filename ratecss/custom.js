@@ -53,7 +53,7 @@
       ],
       
       // URL参数名
-      paramName: 'custom',
+      paramName: 'css',
       
       // 是否使用!important
       useImportant: false,
