@@ -3,3 +3,11 @@
     color: rgb(237, 233, 223);
     font-weight: bolder;
 }
+
+#page-content div.rating-output div.start-rate-verify:is([style*="%%rating_decimal%%"]) ~ div.start-rate {
+    display: block !important;
+}
+
+#page-content div.rating-output div.start-rate-verify:not([style*="%%rating_decimal%%"]) ~ div.rate {
+    display: none !important;
+}
