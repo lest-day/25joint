@@ -1,10 +1,19 @@
 /* syndication - worklist */
-#page-content div.rate {
+#page-content div.rate,
+#page-content div.start-rate {
     bottom: 2.5px;
     position: relative;
 }
 
 #page-content div.rating-output div.start-rate-verify:is([style*="%%rating_decimal%%"]) ~ div.start-rate {
+    display: none !important;
+}
+
+#page-content div.rating-output div.start-rate-verify:is([style*="%%rating_decimal%%"]) ~ div.rate {
+    display: block !important;
+}
+
+#page-content div.rating-output div.start-rate-verify:not([style*="%%rating_decimal%%"]) ~ div.start-rate {
     display: block !important;
 }
 
