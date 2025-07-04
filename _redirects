@@ -37,6 +37,10 @@
 /ratecss/ccb-wiki                           /ratecss/isc/index.css 200
 /ratecss/iscsandbox                         /ratecss/isc/index.css 200
 
+/ratecss/nationarea                         /ratecss/nationarea/index.css 200
+/ratecss/nationarea/                        /ratecss/nationarea/index.css 200
+/ratecss/nationareabox                      /ratecss/nationarea/index.css 200
+
 /ratecss/neironlight                        /ratecss/neironlight/index.css 200
 /ratecss/neironlight/                       /ratecss/neironlight/index.css 200
 /ratecss/neuronlight-wiki-mo                /ratecss/neironlight/index.css 200
