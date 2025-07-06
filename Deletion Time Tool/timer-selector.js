@@ -39,7 +39,6 @@ var TRANSLATIONS = {
     'timer-type-generic': '通用',
     'timer-type-deletion': '删除',
     'timer-type-ban': '封禁',
-    'timer-type-shield': '屏蔽',
     'deletion-options': '删除选项',
     'deletion-score': '当前文章的分数为',
     'summary-deletion-reasons': [],
@@ -67,14 +66,10 @@ var TRANSLATIONS = {
     'css-extra': '自定计时器样式（可选）',
     'template': '输出模板',
     'template-deletion': '本文章目前为%%score%%分，现依据[[[deletions-guide|删除指导]]]宣告将删除此页面：\n\n%%iframe%%\n\n请本文章作者尽快进行修改内容提高质量。\n如果该页面作者无法及时做出更改，其他人也可以在确认后向管理组申请重写。',
-    'template-ban': '[[div class=\"blockquote\"]]\n**XXXX年XX月XX日：**网站成员[[*user USERNAME]]【违规行为】，根据以下规则和内容：\n【网站站规内容】\n\n将要对该网站成员进行封禁处分：\n%%iframe%%\n\n如果对此次处理结果有疑问，可以联系管理组。本次处分允许\\不允许申诉。\n[[/div]]',
-    'template-shield': '[[div class=\"blockquote\"]]\n**XXXX年XX月XX日：**网站成员[[*user USERNAME]]【违规行为】，其滥用功能并根据以下规则和内容：\n【网站站规内容】\n\n将要对该网站成员进行限制讨论功能的处分：\n%%iframe%%\n\n如果对此次处理结果有疑问，可以联系管理组。本次处分允许\\不允许申诉。\n[[/div]]',
-    'message-deletion-progress': '此页面将在以下时间后删除：',
+    'template-ban': '[[div class=\"blockquote\"]]\n**XXXX年XX月XX日：**网站成员[[*user USERNAME]]【违规行为】，根据以下规则和内容：\n【网站站规内容】\n\n将要对该网站成员进行封禁处分：\n%%iframe%%\n\n如果对此次处理结果有疑问，可以联系管理组。本次处分允许\\不允许申诉。\n[[/div]]',    'message-deletion-progress': '此页面将在以下时间后删除：',
     'message-deletion-finished': '此页面在以下时间前可删除：',
     'message-ban-progress': '此用户封禁将到期于：',
     'message-ban-finished': '此用户封禁已到期：',
-    'message-shield-progress': '此讨论屏蔽将到期于：',
-    'message-shield-finished': '此讨论屏蔽已到期：',
     'build-timer': '生成计时器',
     'build-and-copy-timer': '生成并复制',
     'info-help': '帮助',
@@ -92,7 +87,6 @@ var TRANSLATIONS = {
     'timer-type-generic': '通用',
     'timer-type-deletion': '刪除',
     'timer-type-ban': '封禁',
-    'timer-type-shield': '屏蔽',
     'deletion-options': '刪除選項',
     'deletion-score': '目前文章分數為',
     'summary-deletion-reasons': [],
@@ -121,13 +115,10 @@ var TRANSLATIONS = {
     'template': '輸出内容模板',
     'template-deletion': '本文章目前為%%score%%分，現依據[[[deletions-guide|刪除指導]]]宣告將刪除此頁面：\n\n%%iframe%%\n\n請本文章的作者快速修改内容提高質量。\n如果該頁面作者無法及時的修改，其他人也可以在確認后向管理組申請重寫。',
     'template-ban': '[[div class=\"blockquote\"]]\n**XXXX年XX月XX日：**網站成員[[*user USERNAME]]【違規行爲】，根據以下規則和内容：\n【網站站規内容】\n\n將要對該網站成員進行封禁處分：\n%%iframe%%\n\n如果對此次處理結果有疑問，可以聯係管理組。本次處分允許\\不允許申訴。\n[[/div]]',
-    'template-shield': '[[div class=\"blockquote\"]]\n**XXXX年XX月XX日：**網站成員[[*user USERNAME]]【違規行爲】，其濫用功能並根據以下規則和内容：\n【網站站規内容】\n\n將要對該網站成員進行限制討論功能的處分：\n%%iframe%%\n\n如果對此次處理結果有疑問，可以聯係管理組。本次處分允許\\不允許申訴。\n[[/div]]',
     'message-deletion-progress': '此頁面將在以下時間後刪除：',
     'message-deletion-finished': '此頁面在以下時間前可刪除：',
     'message-ban-progress': '此用戶封禁将過期于：',
     'message-ban-finished': '此用戶封禁已過期：',
-    'message-shield-progress': '此討論屏蔽将過期于：',
-    'message-shield-finished': '此討論屏蔽已過期：',
     'build-timer': '生成計時器',
     'build-and-copy-timer': '生成并複製',
     'info-help': '幫助',
@@ -382,7 +373,6 @@ function initializeMessages(language) {
   setMessage(language, 'timer-type-generic-label', 'timer-type-generic');
   setMessage(language, 'timer-type-deletion-label', 'timer-type-deletion');
   setMessage(language, 'timer-type-ban-label', 'timer-type-ban');
-  setMessage(language, 'timer-type-shield-label', 'timer-type-shield');
 
   setMessage(language, 'deletion-options-label', 'deletion-options');
   setMessage(language, 'deletion-score-label', 'deletion-score');
@@ -472,15 +462,6 @@ function initializeHooks(language) {
 
     toggleDeletionOptVisibility(false);
   };
-
-  document.getElementById('timer-type-shield').onclick = function () {
-    document.getElementById('message-progress').value = getMessage(language, 'message-shield-progress');
-    document.getElementById('message-finished').value = getMessage(language, 'message-shield-finished');
-    document.getElementById('template').value = getMessage(language, 'template-shield');
-
-    toggleDeletionOptVisibility(false);
-  };
-
 
   function onClickStartDate() {
     document.getElementById('start-later').click();
