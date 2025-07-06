@@ -3,6 +3,14 @@
 /ratecss/custom                             /ratecss/custom.js 200
 /ratecss/custom/                            /ratecss/custom.js 200
 
+/Tool
+/timer-selector.css                         /Deletion Time Tool/timer-selector.css 200
+/timer-selector.html                        /Deletion Time Tool/timer-selector.html 200
+/timer-selector.js                          /Deletion Time Tool/timer-selector.js 200
+/timer.css                                  /Deletion Time Tool/timer.css 200
+/timer.html                                 /Deletion Time Tool/timer.html 200
+/timer.js                                   /Deletion Time Tool/timer.js 200
+
 # Wiki List
 /ratecss/syndication                        /ratecss/syndication/index.css 200
 
