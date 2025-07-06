@@ -40,10 +40,12 @@ var TRANSLATIONS = {
     'timer-type-deletion': '删除',
     'timer-type-ban': '封禁',
     'deletion-options': '删除选项',
-    'deletion-score': '当前文章的分数为',
+    'deletion-score': '当前参赛作品的净得分为',
+    'deletion-score-original': '，原站评分为',
     'summary-deletion-reasons': [],
     'duration': '运行时间',
     'duration-1d': '1日',
+    'duration-2d': '2日',
     'duration-1w': '1周',
     'duration-2w': '2周',
     'duration-1y': '1年',
@@ -65,7 +67,7 @@ var TRANSLATIONS = {
     'width': '宽度',
     'css-extra': '自定计时器样式（可选）',
     'template': '输出模板',
-    'template-deletion': '本文章目前为%%score%%分，现依据[[[deletions-guide|删除指导]]]宣告将删除此页面：\n\n%%iframe%%\n\n请本文章作者尽快进行修改内容提高质量。\n如果该页面作者无法及时做出更改，其他人也可以在确认后向管理组申请重写。',
+    'template-deletion': '当前参赛作品净得分为 %%score%% 分（已达到红线）、原站评分为 %%scoreOriginal%% 分（未达到原站删除线），现由赛事组宣告删除此作品登记页、将原作品予以退赛处理：\n\n%%iframe%%\n\n若有重写意愿请联系原作者并在此赛事帖回复，或者联系原作参赛站职员，删除流程期间允许进行大规模修改。',
     'template-ban': '[[div class=\"blockquote\"]]\n**XXXX年XX月XX日：**网站成员[[*user USERNAME]]【违规行为】，根据以下规则和内容：\n【网站站规内容】\n\n将要对该网站成员进行封禁处分：\n%%iframe%%\n\n如果对此次处理结果有疑问，可以联系管理组。本次处分允许\\不允许申诉。\n[[/div]]',    'message-deletion-progress': '此页面将在以下时间后删除：',
     'message-deletion-finished': '此页面在以下时间前可删除：',
     'message-ban-progress': '此用户封禁将到期于：',
@@ -92,6 +94,7 @@ var TRANSLATIONS = {
     'summary-deletion-reasons': [],
     'duration': '運行時間',
     'duration-1d': '1日',
+    'duration-2d': '2日',
     'duration-1w': '1周',
     'duration-2w': '2周',
     'duration-1y': '1年',
@@ -158,6 +161,13 @@ function getDefaultDeletionScore(language) {
   }
 }
 
+function getDefaultDeletionScoreOriginal(language) {
+  switch (String(language)) {
+    default:
+      return 0;
+  }
+}
+
 function insertCSS(styling) {
   var head = document.head || document.getElementsByTagName('head')[0];
   var style = document.createElement('style');
@@ -189,10 +199,10 @@ function buildUrl(language, startDate, durationMs, progressMessage, finishedMess
     parameters.append('style', styling);
   }
 
-  return 'https://timerdfc.pages.dev/timer.html?' + parameters;
+  return 'https://25joint.wdopen.xyz/Deletion%20Time%20Tool/timer.html?' + parameters;
 }
 
-function buildWikitext(language, template, url, score, height, width) {
+function buildWikitext(language, template, url, score, scoreOriginal, height, width) {
   function getSummaryDeletionText() {
     var summaryDeletionBox = document.getElementById('summary-deletion-reason');
     if (summaryDeletionBox.value) {
@@ -211,6 +221,7 @@ function buildWikitext(language, template, url, score, height, width) {
   return template
     .replace('%%url%%', url)
     .replace('%%score%%', score)
+    .replace('%%scoreOriginal%%', scoreOriginal)
     .replace('%%iframe%%', iframe)
     .replace('%%summary%%', getSummaryDeletionText());
 }
@@ -323,6 +334,7 @@ function buildTimer(language, copyToClipboard) {
   var durationMs = getDuration(language);
   var data = getTextData(language);
   var score = document.getElementById('deletion-score-value').value;
+  var scoreOriginal = document.getElementById('deletion-score-original-value').value;
 
   // Build wikitext and output
   var url = buildUrl(
@@ -334,7 +346,7 @@ function buildTimer(language, copyToClipboard) {
     data.styling,
   );
 
-  outputElement.value = buildWikitext(language, data.template, url, score, data.height, data.width);
+  outputElement.value = buildWikitext(language, data.template, url, score, scoreOriginal, data.height, data.width);
 
   if (copyToClipboard) {
     navigator.clipboard.writeText(outputElement.value);
@@ -376,6 +388,7 @@ function initializeMessages(language) {
 
   setMessage(language, 'deletion-options-label', 'deletion-options');
   setMessage(language, 'deletion-score-label', 'deletion-score');
+  setMessage(language, 'deletion-score-original-label', 'deletion-score-original');
 
   setMessage(language, 'start-label', 'start-time');
   setMessage(language, 'start-now-label', 'start-time-now');
@@ -383,6 +396,7 @@ function initializeMessages(language) {
 
   setMessage(language, 'duration-label', 'duration');
   setMessage(language, 'duration-1d-label', 'duration-1d');
+  setMessage(language, 'duration-2d-label', 'duration-2d');
   setMessage(language, 'duration-1w-label', 'duration-1w');
   setMessage(language, 'duration-2w-label', 'duration-2w');
   setMessage(language, 'duration-1y-label', 'duration-1y');
@@ -428,6 +442,19 @@ function initializeDeletionScore(deletionScore) {
   }
 }
 
+function initializeDeletionScoreOriginal(deletionScoreOriginal) {
+  var scoreOriginalBox = document.getElementById('deletion-score-original-value');
+  scoreOriginalBox.value = deletionScoreOriginal;
+  scoreOriginalBox.onclick = scoreOriginalBox.onblur = function () {
+    if (Number(scoreOriginalBox.value) > deletionScoreOriginal) {
+      scoreOriginalBox.style.backgroundColor = "yellow";
+    } else {
+      scoreOriginalBox.style.backgroundColor = "white";
+    }
+  }
+}
+
+
 function initializeHooks(language) {
   function toggleDeletionOptVisibility(show) {
     var deletionOptElement = document.getElementById('deletion-options');
@@ -438,7 +465,9 @@ function initializeHooks(language) {
     }
   }
 
+  document.getElementById('duration-1d').click();
   document.getElementById('timer-type-generic').onclick = function () {
+    document.getElementById('duration-1d').click();
     document.getElementById('message-progress').value = '';
     document.getElementById('message-finished').value = '';
     document.getElementById('template').value = '%%iframe%%';
@@ -447,7 +476,7 @@ function initializeHooks(language) {
   };
 
   document.getElementById('timer-type-deletion').onclick = function () {
-    document.getElementById('duration-1d').click();
+    document.getElementById('duration-2d').click();
     document.getElementById('message-progress').value = getMessage(language, 'message-deletion-progress');
     document.getElementById('message-finished').value = getMessage(language, 'message-deletion-finished');
     document.getElementById('template').value = getMessage(language, 'template-deletion');
@@ -456,6 +485,7 @@ function initializeHooks(language) {
   };
 
   document.getElementById('timer-type-ban').onclick = function () {
+    document.getElementById('duration-1d').click();
     document.getElementById('message-progress').value = getMessage(language, 'message-ban-progress');
     document.getElementById('message-finished').value = getMessage(language, 'message-ban-finished');
     document.getElementById('template').value = getMessage(language, 'template-ban');
@@ -492,6 +522,7 @@ function setup() {
   var language = parameters.get('lang');
   var styling = parameters.get('style');
   var deletionScore = parameters.get('delScore');
+  var deletionScoreOriginal = parameters.get('delScoreOriginal');
 
   // Check parameters
   if (!language) {
@@ -503,6 +534,14 @@ function setup() {
     deletionScore = getDefaultDeletionScore(language);
   }
 
+  if (!deletionScoreOriginal) {
+    deletionScoreOriginal = getDefaultDeletionScoreOriginal(language);
+  }
+
+  if (!deletionScoreOriginal) {
+    deletionScoreOriginal = getDefaultDeletionScoreOriginal(language);
+  }
+
   // Insert custom CSS, if any
   if (styling !== null) {
     insertCSS(styling);
@@ -510,6 +549,7 @@ function setup() {
 
   initializeMessages(language);
   initializeDeletionScore(deletionScore);
+  initializeDeletionScoreOriginal(deletionScoreOriginal);
   initializeHooks(language);
 }
 

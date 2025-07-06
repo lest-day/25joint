@@ -3,15 +3,15 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="SCP Wiki Timer Selector">
-  <meta name="keywords" content="scp,wiki,timer,selector,generator">
+  <meta name="description" content="计时器生成">
+  <meta name="keywords" content="timer,selector,generator">
   <link rel="stylesheet" href="timer-selector.css">
   <script src="timer-selector.js"></script>
-  <title>Timer Selector</title>
+  <title>计时器生成</title>
 </head>
 
 <body>
-  <noscript>This application requires Javascript to function.</noscript>
+  <noscript>此功能需要使用Javasript</noscript>
 
   <h1 id="error" class="hidden"></h1>
 
@@ -43,6 +43,8 @@
       <div class="text text-tiny">
         <label id="deletion-score-label"></label>
         <input id="deletion-score-value" type="number"></input>
+        <label id="deletion-score-original-label"></label>
+        <input id="deletion-score-original-value" type="number"></input>
         <label id="summary-deletion-label"></label>
         <select id="summary-deletion-reason">
           <option id="summary-deletion-reason-none" value=""></option>
@@ -75,6 +77,12 @@
       <span>
         <input id="duration-1d" type="radio" name="duration" value="86400000" checked>
         <label id="duration-1d-label" for="86400000"></label> <!-- in ms -->
+      </span>
+
+      <!-- 2 day -->
+      <span>
+        <input id="duration-2d" type="radio" name="duration" value="172800000" checked>
+        <label id="duration-2d-label" for="172800000"></label> <!-- in ms -->
       </span>
 
       <!-- 1 week -->
