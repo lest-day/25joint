@@ -50,11 +50,12 @@ var TRANSLATIONS = {
     'summary-deletion-reason-none': 'N/A',
     'summary-deletion-reasons': [],
     'ban-options': '封禁选项',
-    'ban-options-type': '封禁类型为',
+    'ban-options-user': '受封禁用户为',
+    'ban-options-type': '，封禁类型为',
     'summary-ban': '，封禁原因为',
     'ban-options-type-violation': '赛事违规',
     'ban-options-type-cheating': '赛事作弊',
-    'summary-ban-reason-skeleton': '__%%banreason%%__',
+    'summary-ban-reason-skeleton': '%%banreason%%',
     'summary-ban-reason-none': '其他（请说明）',
     'summary-ban-reasons': ['破坏行为', '抄袭行为', '使用小号刷分', '操控评分结果', '妨碍他人自主评分', '非参赛站成员评分'],
     'duration': '运行时间',
@@ -82,7 +83,7 @@ var TRANSLATIONS = {
     'css-extra': '自定计时器样式（可选）',
     'template': '输出模板',
     'template-deletion': '当前参赛作品净得分为 %%score%% 分（已达到红线）、原站评分为 %%scoreOriginal%% 分（未达到原站删除线），现由赛事组宣告删除此作品登记页、将原作品予以退赛处理：\n\n%%iframe%%\n\n若有重写意愿请联系原作者并在此赛事帖回复，或者联系原作参赛站职员，删除流程期间允许进行大规模修改。',
-    'template-ban': '经赛事裁判认定，[用户名]于[时间]涉及%%bansummary%%，触及赛事规则并构成**%%bantype%%**行为，决定予以中间站封禁处理：\n\n%%iframe%%\n\n**参与裁定人员列表：**\n* [赛事裁判A]\n* [赛事裁判B]\n* [赛事裁判C]\n\n若对此处理有疑问或需申诉，请在准备好相关证据和材料后联系赛事组。',
+    'template-ban': '经赛事裁判认定，[[*user %%banuser%%]]于[时间]涉及__%%bansummary%%__，触及赛事规则并构成**%%bantype%%**行为，决定予以中间站封禁处理：\n\n%%iframe%%\n\n**参与裁定人员列表：**\n* [赛事裁判A]\n* [赛事裁判B]\n* [赛事裁判C]\n\n若对此处理有疑问或需申诉，请在准备好相关证据和材料后联系赛事组。',
     'message-deletion-progress': '此页面将在以下时间后删除：',
     'message-deletion-finished': '此页面在以下时间前可删除：',
     'message-ban-progress': '此用户封禁将到期于：',
@@ -97,25 +98,29 @@ var TRANSLATIONS = {
 
   // Traditional Chinese
   'zh-hant': {
-    'timer-description': '此計時器將過期于：',
-    'timer-progress': '此計時器將過期于：',
+    'timer-description': '此計時器將過期於：',
+    'timer-progress': '此計時器將過期於：',
     'timer-finished': '此計時器已過期：',
     'timer-type': '計時器類型',
     'timer-type-generic': '通用',
     'timer-type-deletion': '刪除',
     'timer-type-ban': '封禁',
     'deletion-options': '刪除選項',
-    'ban-options': '封禁選項',
-    'deletion-score': '當前參賽作品的淨得分爲',
-    'deletion-score-original': '，原站評分爲',
+    'deletion-score': '當前參賽作品的淨得分為',
+    'deletion-score-original': '，原站評分為',
     'summary-deletion': '刪除原因（可選）',
     'summary-deletion-reason-skeleton': '%%reason%%',
     'summary-deletion-reason-none': 'N/A',
     'summary-deletion-reasons': [],
-    'summary-ban': '封禁原因爲',
-    'summary-ban-reason-skeleton': '__%%banreason%%__',
+    'ban-options': '封禁選項',
+    'ban-options-user': '受封禁用戶為',
+    'ban-options-type': '，封禁類型為',
+    'summary-ban': '，封禁原因为',
+    'ban-options-type-violation': '賽事違規',
+    'ban-options-type-cheating': '賽事作弊',
+    'summary-ban-reason-skeleton': '%%banreason%%',
     'summary-ban-reason-none': '其他（請說明）',
-    'summary-ban-reasons': ['破壞行爲', '抄襲行爲', '使用小號刷分', '操控評分結果', '妨礙他人自主評分', '非參賽站成員評分'],
+    'summary-ban-reasons': ['破壞行為', '抄襲行為', '使用小號刷分', '操控評分結果', '妨礙他人自主評分', '非參賽站成員評分'],
     'duration': '運行時間',
     'duration-1d': '1日',
     'duration-2d': '2日',
@@ -132,26 +137,27 @@ var TRANSLATIONS = {
     'start-time': '開始時間',
     'start-time-now': '現在',
     'start-time-later': '稍後',
-    'messages': '通知内容',
+    'messages': '通知內容',
     'message-progress': '此計時器運行中（可選）',
-    'message-finished': '此計時器已過期（可選）',
+    'message-finished': '此計時器已到期（可選）',
     'advanced-section': '高級設置',
     'height': '高度',
     'width': '寬度',
-    'css-extra': '自定義計時器樣式（可選）',
-    'template': '輸出内容模板',
-    'template-deletion': '當前參賽作品淨得分爲 %%score%% 分（已達到紅線）、原站評分爲 %%scoreOriginal%% 分（未達到原站刪除線），現由賽事組宣告刪除此作品登記頁、將原作品予以退賽處理：\n\n%%iframe%%\n\n若有重寫意願請聯繫原作者並在此賽事帖回覆，或者聯繫原作參賽站職員，刪除流程期間允許進行大規模修改。',
-    'template-ban': '經賽事裁判認定，[用戶名]於[時間]進行%%bansummary%%，觸及賽事規則並構成（賽事違規/賽事作弊）行爲，決定予以中間站封禁處理：\n\n%%iframe%%\n\n**參與裁定人員列表：**\n* [賽事裁判A]\n* [賽事裁判B]\n* [賽事裁判C]\n\n若對此處理有疑問或需申訴，請在準備好相關證據和材料後聯繫賽事組。',
+    'css-extra': '自定計時器樣式（可選）',
+    'template': '輸出模板',
+    'template-deletion': '當前參賽作品淨得分為 %%score%% 分（已達到紅線）、原站評分為 %%scoreOriginal%% 分（未達到原站刪除線），現由賽事組宣告刪除此作品登記頁、將原作品予以退賽處理：\n\n%%iframe%%\n\n若有重寫意願請聯繫原作者並在此賽事帖回覆，或者聯繫原作參賽站職員，刪除流程期間允許進行大規模修改。',
+    'template-ban': '經賽事裁判認定，[[*user %%banuser%]]%於[時間]涉及__%%bansummary%%__，觸及賽事規則並構成**%%bantype%%**行為，決定予以中間站封禁處理：\n\n%%iframe%%\n\n**參與裁定人員列表：**\n* [賽事裁判A]\n* [賽事裁判B]\n* [賽事裁判C]\n\n若對此處理有疑問或需申訴，請在準備好相關證據和材料後聯繫賽事組。',
     'message-deletion-progress': '此頁面將在以下時間後刪除：',
     'message-deletion-finished': '此頁面在以下時間前可刪除：',
-    'message-ban-progress': '此用戶封禁将過期于：',
-    'message-ban-finished': '此用戶封禁已過期：',
+    'message-ban-progress': '此用戶封禁將到期於：',
+    'message-ban-finished': '此用戶封禁已到期：',
     'build-timer': '生成計時器',
-    'build-and-copy-timer': '生成并複製',
+    'build-and-copy-timer': '生成並複製',
     'info-help': '幫助',
     'info-source': '來源',
-    'error-missing': '請先在每個選擇項完成選擇。',
+    'error-missing': '請先在每個項中做選擇。',
     'error-invalid': '內部狀態無效，請提交錯誤報告。',
+
   },
 };
 
@@ -227,6 +233,16 @@ function buildUrl(language, startDate, durationMs, progressMessage, finishedMess
 }
 
 function buildWikitext(language, template, url, score, scoreOriginal, height, width) {
+  function getBanUserText() {
+    var banUserBox = document.getElementById('ban-options-user-value');
+    if (banUserBox.value) {
+      var retBanUser = banUserBox.value;
+      return retBanUser.replace('%%banuser%%', retBanUser);
+    } else {
+      return "USERNAME";
+    }
+  }
+
   function getBanTypeText() {
     var banTypeBox = document.getElementById('ban-options-type');
     if (banTypeBox.value) {
@@ -268,6 +284,7 @@ function buildWikitext(language, template, url, score, scoreOriginal, height, wi
     .replace('%%score%%', score)
     .replace('%%scoreOriginal%%', scoreOriginal)
     .replace('%%iframe%%', iframe)
+    .replace('%%banuser%%', getBanUserText())
     .replace('%%bantype%%', getBanTypeText())
     .replace('%%summary%%', getSummaryDeletionText())
     .replace('%%bansummary%%', getSummaryBanText());
@@ -456,6 +473,7 @@ function initializeMessages(language) {
 
   setMessage(language, 'deletion-options-label', 'deletion-options');
   setMessage(language, 'ban-options-label', 'ban-options');
+  setMessage(language, 'ban-options-user-label', 'ban-options-user');
   setMessage(language, 'ban-options-type-label', 'ban-options-type');
   setMessage(language, 'ban-options-type-cheating-label', 'ban-options-type-cheating');
   setMessage(language, 'ban-options-type-violation-label', 'ban-options-type-violation');

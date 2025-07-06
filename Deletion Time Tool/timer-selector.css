@@ -27,6 +27,10 @@ fieldset {
   width: 3em;
 }
 
+.text-normal-tiny input {
+  width: 6.5em;
+}
+
 #build {
   margin: 0.4em;
 }
