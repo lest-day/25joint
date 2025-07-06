@@ -27,8 +27,12 @@ fieldset {
   width: 3em;
 }
 
-.text-normal-tiny input {
+.text-tiny input.banuser-size {
   width: 6.5em;
+}
+
+.text-tiny input.bandate-size {
+  width: 8em;
 }
 
 #build {
