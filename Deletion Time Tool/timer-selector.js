@@ -118,7 +118,7 @@ var TRANSLATIONS = {
     'css-extra': '自定義計時器樣式（可選）',
     'template': '輸出内容模板',
     'template-deletion': '當前參賽作品淨得分爲 %%score%% 分（已達到紅線）、原站評分爲 %%scoreOriginal%% 分（未達到原站刪除線），現由賽事組宣告刪除此作品登記頁、將原作品予以退賽處理：\n\n%%iframe%%\n\n若有重寫意願請聯繫原作者並在此賽事帖回覆，或者聯繫原作參賽站職員，刪除流程期間允許進行大規模修改。',
-    'template-ban': '',
+    'template-ban': '經賽事裁判認定，[用戶名]於[時間]進行[違規作弊行爲]，觸及賽事規則並構成（賽事違規/賽事作弊）行爲，決定予以中間站封禁處理：\n\n%%iframe%%\n\n**參與裁定人員列表：**\n* [賽事裁判A]\n* [賽事裁判B]\n* [賽事裁判C]\n\n若對此處理有疑問或需申訴，請在準備好相關證據和材料後聯繫賽事組。',
     'message-deletion-progress': '此頁面將在以下時間後刪除：',
     'message-deletion-finished': '此頁面在以下時間前可刪除：',
     'message-ban-progress': '此用戶封禁将過期于：',
