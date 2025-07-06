@@ -256,15 +256,19 @@ function buildWikitext(language, template, url, score, scoreOriginal, height, wi
   }
 
   function getBanDateText() {
-    var banDateBox = document.getElementById('ban-options-date-value');
-    if (banDateBox.value) {
-      var retBanDate = banDateBox.value;
+    var banDateBox = document.getElementById('ban-options-date-value').valueAsNumber;
+    if (banDateBox) {
+      var date = new Date(banDateBox);
+      var year = date.getFullYear();
+      var month = ('0' + (date.getMonth() + 1)).slice(-2);
+      var day = ('0' + date.getDate()).slice(-2);
+      var retBanDate = year + '年' + month + '月' + day + '日';
       return retBanDate.replace('%%bandate%%', retBanDate);
     } else {
-      return "[时间]";
+      return "YYYY年MM月DD日";
     }
   }
-  
+
   function getSummaryBanText() {
     var summaryBanBox = document.getElementById('summary-ban-reason');
     if (summaryBanBox.value) {
