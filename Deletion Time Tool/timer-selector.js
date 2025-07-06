@@ -30,7 +30,7 @@ var TRANSLATIONS = {
     'summary-deletion-reasons': ['1', '2', '3'],
     'template-ban': 'score: %%score%%\n\nBanReason:%%banreason%%\n\niframe: %%iframe%%',
     'summary-ban-reason-skeleton': '**(%%reasonBan%%).**',
-    'summary-ban-reasons': ['1', '2', '3'],    
+    'summary-ban-reasons': ['1', '2', '3'],
   },
 
   // Simplified Chinese
@@ -50,7 +50,10 @@ var TRANSLATIONS = {
     'summary-deletion-reason-none': 'N/A',
     'summary-deletion-reasons': [],
     'ban-options': '封禁选项',
-    'summary-ban': '封禁原因',
+    'ban-options-type': '封禁类型为',
+    'summary-ban': '，封禁原因为',
+    'ban-options-type-violation': '赛事违规',
+    'ban-options-type-cheating': '赛事作弊',
     'summary-ban-reason-skeleton': '__%%banreason%%__',
     'summary-ban-reason-none': '其他（请说明）',
     'summary-ban-reasons': ['破坏行为', '抄袭行为', '使用小号刷分', '操控评分结果', '妨碍他人自主评分', '非参赛站成员评分'],
@@ -79,7 +82,7 @@ var TRANSLATIONS = {
     'css-extra': '自定计时器样式（可选）',
     'template': '输出模板',
     'template-deletion': '当前参赛作品净得分为 %%score%% 分（已达到红线）、原站评分为 %%scoreOriginal%% 分（未达到原站删除线），现由赛事组宣告删除此作品登记页、将原作品予以退赛处理：\n\n%%iframe%%\n\n若有重写意愿请联系原作者并在此赛事帖回复，或者联系原作参赛站职员，删除流程期间允许进行大规模修改。',
-    'template-ban': '经赛事裁判认定，[用户名]于[时间]涉及%%bansummary%%，触及赛事规则并构成（赛事违规/赛事作弊）行为，决定予以中间站封禁处理：\n\n%%iframe%%\n\n**参与裁定人员列表：**\n* [赛事裁判A]\n* [赛事裁判B]\n* [赛事裁判C]\n\n若对此处理有疑问或需申诉，请在准备好相关证据和材料后联系赛事组。',
+    'template-ban': '经赛事裁判认定，[用户名]于[时间]涉及%%bansummary%%，触及赛事规则并构成**%%bantype%%**行为，决定予以中间站封禁处理：\n\n%%iframe%%\n\n**参与裁定人员列表：**\n* [赛事裁判A]\n* [赛事裁判B]\n* [赛事裁判C]\n\n若对此处理有疑问或需申诉，请在准备好相关证据和材料后联系赛事组。',
     'message-deletion-progress': '此页面将在以下时间后删除：',
     'message-deletion-finished': '此页面在以下时间前可删除：',
     'message-ban-progress': '此用户封禁将到期于：',
@@ -109,7 +112,7 @@ var TRANSLATIONS = {
     'summary-deletion-reason-skeleton': '%%reason%%',
     'summary-deletion-reason-none': 'N/A',
     'summary-deletion-reasons': [],
-    'summary-ban': '封禁原因',
+    'summary-ban': '封禁原因爲',
     'summary-ban-reason-skeleton': '__%%banreason%%__',
     'summary-ban-reason-none': '其他（請說明）',
     'summary-ban-reasons': ['破壞行爲', '抄襲行爲', '使用小號刷分', '操控評分結果', '妨礙他人自主評分', '非參賽站成員評分'],
@@ -224,6 +227,16 @@ function buildUrl(language, startDate, durationMs, progressMessage, finishedMess
 }
 
 function buildWikitext(language, template, url, score, scoreOriginal, height, width) {
+  function getBanTypeText() {
+    var banTypeBox = document.getElementById('ban-options-type');
+    if (banTypeBox.value) {
+      var retBanType = banTypeBox.options[banTypeBox.selectedIndex].text;
+      return retBanType.replace('%%bantype%%', retBanType);
+    } else {
+      return "";
+    }
+  }
+
   function getSummaryDeletionText() {
     var summaryDeletionBox = document.getElementById('summary-deletion-reason');
     if (summaryDeletionBox.value) {
@@ -255,6 +268,7 @@ function buildWikitext(language, template, url, score, scoreOriginal, height, wi
     .replace('%%score%%', score)
     .replace('%%scoreOriginal%%', scoreOriginal)
     .replace('%%iframe%%', iframe)
+    .replace('%%bantype%%', getBanTypeText())
     .replace('%%summary%%', getSummaryDeletionText())
     .replace('%%bansummary%%', getSummaryBanText());
 }
@@ -442,6 +456,9 @@ function initializeMessages(language) {
 
   setMessage(language, 'deletion-options-label', 'deletion-options');
   setMessage(language, 'ban-options-label', 'ban-options');
+  setMessage(language, 'ban-options-type-label', 'ban-options-type');
+  setMessage(language, 'ban-options-type-cheating-label', 'ban-options-type-cheating');
+  setMessage(language, 'ban-options-type-violation-label', 'ban-options-type-violation');
   setMessage(language, 'deletion-score-label', 'deletion-score');
   setMessage(language, 'deletion-score-original-label', 'deletion-score-original');
 
