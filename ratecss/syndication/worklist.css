@@ -22,5 +22,5 @@
 }
 
 #page-content div.rating-output div.start-rate-verify:not([style*="%%rating_decimal%%"])~div.start-rate::after {
-    content: "★";
+    content: "（★）";
 }
