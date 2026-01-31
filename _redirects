@@ -1,19 +1,8 @@
 /ratecss/general                            /ratecss/general.css 200
 /ratecss/general/                           /ratecss/general.css 200
-/ratecss/custom                             /ratecss/custom.js 200
-/ratecss/custom/                            /ratecss/custom.js 200
 
 # Wiki List
 /ratecss/syndication                        /ratecss/syndication/index.css 200
-
-/ratecss/ability                            /ratecss/ability/index.css 200
-/ratecss/ability/                           /ratecss/ability/index.css 200
-/ratecss/special-ability-wiki               /ratecss/ability/index.css 200
-/ratecss/special-ability-wiki-sandboxcn     /ratecss/ability/index.css 200
-
-/ratecss/anothords                          /ratecss/anothords/index.css 200
-/ratecss/anothords/                         /ratecss/anothords/index.css 200
-/ratecss/anothords-sandbox                  /ratecss/anothords/index.css 200
 
 /ratecss/as                                 /ratecss/as/index.css 200
 /ratecss/as/                                /ratecss/as/index.css 200
@@ -27,33 +16,6 @@
 /ratecss/deep-forest-club                   /ratecss/dfc/index.css 200
 /ratecss/dfc-sandbox                        /ratecss/dfc/index.css 200
 
-/ratecss/ltda                               /ratecss/ltda/index.css 200
-/ratecss/ltda/                              /ratecss/ltda/index.css 200
-/ratecss/ltda                               /ratecss/ltda/index.css 200
-/ratecss/ltdasb                             /ratecss/ltda/index.css 200
-
-/ratecss/isc                                /ratecss/isc/index.css 200
-/ratecss/isc/                               /ratecss/isc/index.css 200
-/ratecss/ccb-wiki                           /ratecss/isc/index.css 200
-/ratecss/iscsandbox                         /ratecss/isc/index.css 200
-
-/ratecss/nationarea                         /ratecss/nationarea/index.css 200
-/ratecss/nationarea/                        /ratecss/nationarea/index.css 200
-/ratecss/nationareabox                      /ratecss/nationarea/index.css 200
-
-/ratecss/neironlight                        /ratecss/neironlight/index.css 200
-/ratecss/neironlight/                       /ratecss/neironlight/index.css 200
-/ratecss/neuronlight-wiki-mo                /ratecss/neironlight/index.css 200
-
 /ratecss/rule-wiki                          /ratecss/rule-wiki/index.css 200
 /ratecss/rule-wiki/                         /ratecss/rule-wiki/index.css 200
 /ratecss/rule-wiki-sandbox                  /ratecss/rule-wiki/index.css 200
-
-/ratecss/wop                                /ratecss/wop/index.css 200
-/ratecss/wop/                               /ratecss/wop/index.css 200
-/ratecss/write-on-paper                     /ratecss/wop/index.css 200
-/ratecss/wop-sandbox                        /ratecss/wop/index.css 200
-
-/ratecss/zd                                 /ratecss/zd/index.css 200
-/ratecss/zd/                                /ratecss/zd/index.css 200
-/ratecss/backrooms-survivor-governor        /ratecss/zd/index.css 200
