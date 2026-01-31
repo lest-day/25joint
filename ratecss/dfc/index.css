@@ -1,4 +1,6 @@
 /* dfc - index */
+div.page-rate-widget-box {float: right}
+
 .page-rate-widget-box {
     display: inline-block;
     margin-right: 2em;

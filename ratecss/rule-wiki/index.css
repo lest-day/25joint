@@ -1,4 +1,6 @@
 /* rulewiki - index */
+div.page-rate-widget-box {float: right}
+
 :root {
     --rate-module-background-color: 239, 239, 240;
     --rate-module-text-color: 51, 51, 51;

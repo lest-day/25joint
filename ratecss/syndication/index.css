@@ -1,4 +1,6 @@
 /* syndication -index */
+div.page-rate-widget-box {float: right}
+
 div.page-rate-widget-box {
     display: inline-flex;
     height: 1.4285em;
