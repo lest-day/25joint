@@ -1,6 +1,58 @@
 /* dfc - index */
-#page-content div.rate {
-    color: #fff;
-    padding-top: 3.2px;
-    font-weight: bold;
+.page-rate-widget-box {
+    display: inline-block;
+    margin-right: 2em;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .5)
+}
+
+div.page-rate-widget-box .rate-points {
+    border: solid 1px #633;
+    border-right: 0;
+    border-radius: 5px 0 0 5px;
+    background-color: #633
+}
+
+.page-rate-widget-box .ratedown,
+.page-rate-widget-box .rateup {
+    border-top: solid 1px #633;
+    border-bottom: solid 1px #633;
+    background-color: #fff6f0;
+    font-weight: 700
+}
+
+.page-rate-widget-box .ratedown a,
+.page-rate-widget-box .rateup a {
+    margin: 0 1px;
+    padding: 0 4px;
+    background: 0 0;
+    color: #633
+}
+
+.page-rate-widget-box .ratedown a:hover,
+.page-rate-widget-box .rateup a:hover {
+    background: #633;
+    color: ivory;
+    text-decoration: none
+}
+
+.page-rate-widget-box .cancel {
+    border: solid 1px #633;
+    border-left: 0;
+    border-radius: 0 5px 5px 0;
+    background-color: #633
+}
+
+.page-rate-widget-box .cancel a {
+    background: 0 0;
+    color: #966;
+    text-transform: uppercase
+}
+
+.page-rate-widget-box .cancel a:hover {
+    border-radius: 0 3px 3px 0;
+    background: #633;
+    color: ivory;
+    text-decoration: none
 }
