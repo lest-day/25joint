@@ -42,20 +42,7 @@ function getMessage(language, messageKey) {
       'hours': '时',
       'minutes': '分',
       'seconds': '秒',
-    },
-
-    // Traditional Chinese
-    'zh-hant': {
-      'timer-description': '此計時器將过期於：',
-      'timer-progress': '此計時器將過期于：',
-      'timer-finished': '此計時器已過期：',
-      'years': '年',
-      'months': '月',
-      'days': '日',
-      'hours': '時',
-      'minutes': '分',
-      'seconds': '秒',
-    },
+    }
   };
 
   // Special case:
