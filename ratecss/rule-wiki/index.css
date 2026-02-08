@@ -16,6 +16,10 @@
 }
 
 div.page-rate-widget-box {
+    float: right;
+}
+
+div.page-rate-widget-box {
     display: inline-flex;
     background-color: rgb(var(--rate-module-background-color));
     border: none;
