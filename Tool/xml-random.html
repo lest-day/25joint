@@ -31,13 +31,13 @@
                     throw new Error('XML解析失败: ' + parseError.textContent);
                 }
 
-                // 提取所有originalWiki链接
-                const links = Array.from(xmlDoc.querySelectorAll('item originalWiki'))
+                // ✅ 修复：适配 RSS 结构 (rss → channel → item → originalWiki)
+                const links = Array.from(xmlDoc.querySelectorAll('channel item originalWiki'))
                     .map(node => node.textContent.trim())
                     .filter(url => url);
 
                 if (links.length === 0) {
-                    throw new Error('XML中未找到任何item/originalWiki链接');
+                    throw new Error('XML中未找到任何channel/item/originalWiki链接');
                 }
 
                 // 随机选择并跳转
