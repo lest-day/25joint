@@ -1,0 +1,52 @@
+<script>
+    // 最简单的XML随机跳转JS
+    // 用法: 在URL后添加 ?xml=你的xml文件地址
+    // by DeepSeek
+
+    (function () {
+        // 获取URL参数中的XML地址
+        const urlParams = new URLSearchParams(window.location.search);
+        const xmlUrl = urlParams.get('xml');
+
+        // 必须指定XML参数
+        if (!xmlUrl) {
+            throw new Error('请指定XML文件路径: 在URL后添加 ?xml=你的xml文件地址');
+        }
+
+        // 获取并解析XML，然后随机跳转
+        fetch(xmlUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status} - 无法加载XML文件`);
+                }
+                return response.text();
+            })
+            .then(xmlText => {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+
+                // 检查解析错误
+                const parseError = xmlDoc.querySelector('parsererror');
+                if (parseError) {
+                    throw new Error('XML解析失败: ' + parseError.textContent);
+                }
+
+                // 提取所有originalWiki链接
+                const links = Array.from(xmlDoc.querySelectorAll('item originalWiki'))
+                    .map(node => node.textContent.trim())
+                    .filter(url => url);
+
+                if (links.length === 0) {
+                    throw new Error('XML中未找到任何item/originalWiki链接');
+                }
+
+                // 随机选择并跳转
+                const randomUrl = links[Math.floor(Math.random() * links.length)];
+                window.location.href = randomUrl;
+            })
+            .catch(error => {
+                console.error('XML随机跳转失败:', error);
+                alert('错误: ' + error.message);
+            });
+    })();
+</script>
