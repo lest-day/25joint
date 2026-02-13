@@ -1,19 +1,12 @@
 <script>
-    // 最简单的XML随机跳转JS
-    // 用法: 在URL后添加 ?xml=你的xml文件地址
-    // by DeepSeek
-
     (function () {
-        // 获取URL参数中的XML地址
         const urlParams = new URLSearchParams(window.location.search);
         const xmlUrl = urlParams.get('xml');
 
-        // 必须指定XML参数
         if (!xmlUrl) {
             throw new Error('请指定XML文件路径: 在URL后添加 ?xml=你的xml文件地址');
         }
 
-        // 获取并解析XML，然后随机跳转
         fetch(xmlUrl)
             .then(response => {
                 if (!response.ok) {
@@ -22,8 +15,7 @@
                 return response.text();
             })
             .then(xmlText => {
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                const xmlDoc = new DOMParser().parseFromString(xmlText, 'text/xml');
 
                 // 检查解析错误
                 const parseError = xmlDoc.querySelector('parsererror');
@@ -31,18 +23,17 @@
                     throw new Error('XML解析失败: ' + parseError.textContent);
                 }
 
-                // ✅ 修复：适配 RSS 结构 (rss → channel → item → originalWiki)
-                const links = Array.from(xmlDoc.querySelectorAll('channel item originalWiki'))
+                // 直接通过标签名取，无视任何层级和命名空间
+                const links = Array.from(xmlDoc.getElementsByTagName('originalWiki'))
                     .map(node => node.textContent.trim())
-                    .filter(url => url);
+                    .filter(url => url && url.startsWith('http'));
 
                 if (links.length === 0) {
-                    throw new Error('XML中未找到任何channel/item/originalWiki链接');
+                    throw new Error('XML中未找到任何originalWiki链接');
                 }
 
-                // 随机选择并跳转
-                const randomUrl = links[Math.floor(Math.random() * links.length)];
-                window.location.href = randomUrl;
+                // 随机跳转
+                window.location.href = links[Math.floor(Math.random() * links.length)];
             })
             .catch(error => {
                 console.error('XML随机跳转失败:', error);
